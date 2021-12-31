@@ -20,7 +20,8 @@ const parcelGeoJSON = {
                 "owner": "Diwash",
                 "area": "1 Ropani",
                 "cost": "NPR. 10,00,10,000",
-                "imgUrl": "/static/land1.jpeg"
+                "imgUrl": "/static/land1.jpeg",
+                "clickLink": "https://gharjhagga.com/properties/land/kathmandu/14-aana-land-sale-on-tokha/",
             },
             "geometry": {
                 "type": "Polygon",
@@ -47,7 +48,8 @@ const parcelGeoJSON = {
                 "owner": "Suman",
                 "area": "2 Ropani",
                 "cost": "NPR. 21,00,20,000",
-                "imgUrl": "/static/land2.jpg"
+                "imgUrl": "/static/land2.jpg",
+                "clickLink": "https://gharjhagga.com/properties/land/kathmandu/5-aana-land-on-sale-in-tokha/",
             },
             "geometry": {
                 "type": "Polygon",

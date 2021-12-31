@@ -7,6 +7,7 @@
       <div>&bull; Owner: {{ parcel.owner}}</div>
       <div>&bull; Cost: {{ parcel.cost }}</div>
       <div>&bull; Area: {{ parcel.area }}</div>
+      <div><a class='detail-link' href="{{ parcel.clickLink }}" target="_blank">Go to details</a></div>
     </div>
   </div>
 </template>
@@ -56,10 +57,10 @@ export default {
   methods: {
     setup() {
       const map = this.getMap();
+      // hover info for parcel polygons
       let selected = null;
       map.on('pointermove', (e) =>
       {
-        console.log('pointer is moving');
         if (selected !== null) {
           selected = null;
         }
@@ -68,9 +69,7 @@ export default {
           selected = feature;
           return true;
         }, {
-          layerFilter: layer => {
-            return layer.get('id')==='parcel';
-          }
+            layerFilter: layer => layer.get('id')==='parcel'
         });
         if (selected) {
           this.position = { x: `${parseInt(e.pixel[0])}px`, y: `${parseInt(e.pixel[1])}px` };
@@ -83,6 +82,17 @@ export default {
           this.isVisible = false;
         }
       });
+      // // click to link 
+      // map.on('singleclick', (event) =>
+      // {
+      //     map.forEachFeatureAtPixel(event.pixel, feature =>
+      //     {
+      //       const url = feature.get('clickLink');
+      //       window.open(url, '_blank');
+      //     }, {
+      //       layerFilter: layer => layer.get('id')==='parcel'
+      //     });
+      // });
     },
   },
 }
@@ -94,7 +104,7 @@ export default {
   position: absolute;
   padding: 5px;
   border-radius: 3px;
-  background: #fff8;
+  background: #fffe;
   color: black;
   z-index: 100;
   .parcel-img {
@@ -103,5 +113,37 @@ export default {
   .details {
     padding: 0 1em;
   }
+  .detail-link {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .detail-link:hover,
+  .detail-link:focus {
+    background-color: #F082AC;
+  }
+
 }
 </style>
