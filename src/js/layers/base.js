@@ -14,7 +14,7 @@ export default {
         visible: false,
         zIndex: -10,
         source: new BingMaps({
-            key: process.env.VUE_APP_BING_API_KEY,
+            key: 'AjyggOxEO7AMgXgSllVTch_tJ2cWEzTXsPd7AoHMZ5EJjf6i2U5LESio4Si3Ly3X',
             imagerySet: 'AerialWithLabels',
             maxZoom: 19,
         }),

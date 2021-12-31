@@ -1,0 +1,17 @@
+$primary-color: #23527a;
+$success-color: #1ab35a;
+$danger-color: #dd3c45;
+$warning-color: #ffc33e;
+$info-color: #18a2b8;
+$light-color: white;
+$dark-color: #343a40;
+$secondary-color: #6c757d;
+
+$page-bg: #f4f4ff;
+$secondary-bg: darken($page-bg, 2.5%);
+$font-color: darken($secondary-color, 15%);
+
+$border-radius: 3px;
+
+$primary-font: 'Nunito', Arial, sans-serif;
+$secondary-font: 'Montserrat', 'open sans', sans-serif;

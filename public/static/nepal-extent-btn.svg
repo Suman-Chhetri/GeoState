@@ -1,0 +1,10 @@
+<svg width="0.75em" height="0.75em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <polygon points="16,0 16,6 10,0" style="fill: white" />
+    <line x1="16" y1="0" x2="10" y2="6" style="stroke: white; stroke-width:1.5;"/>
+  </g>
+  <g transform="rotate(180, 8, 8)">
+    <polygon points="16,0 16,6 10,0" style="fill: white" />
+    <line x1="16" y1="0" x2="10" y2="6" style="stroke: white; stroke-width:1.5;"/>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+@mixin flexCenter()
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+@mixin setBlurGlassBackground()
+{
+    padding: 5px;
+    background: rgba(white, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    border: solid 3px transparent;
+    background-clip: padding-box;
+}
+
+@mixin setIconColorClasses()
+{
+    $darken-percent: 10%;
+    &.primary {
+        fill: $primary-color;
+    }
+    &.secondary {
+        fill: $secondary-color;
+    }
+    &.success {
+        fill: darken($success-color, $darken-percent);
+    }
+    &.info {
+        fill: $info-color;
+    }
+    &.light {
+        fill: $light-color;
+    }
+    &.dark {
+        fill: $dark-color;
+    }
+    &.danger {
+        fill: darken($danger-color, $darken-percent);
+    }
+}
+
+@mixin setIconSizeClasses()
+{
+    padding: 0px;
+    &.x-small {
+        width: 12px;
+        height: 12px;
+     }
+     &.small {
+        width: 14px;
+        height: 14px;
+     }
+     &.medium {
+        width: 18px;
+        height: 18px;
+     }
+     &.large {
+        width: 25px;
+        height: 25px;
+     }
+     &.x-large {
+        width: 48px;
+        height: 48px;
+    }
+}

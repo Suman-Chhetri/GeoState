@@ -12,12 +12,6 @@ import baseLayers from '../js/layers/base';
 // import store from '../store';
 
 export const nepalBounds = [80.05, 26.3, 88.21, 30.6];
-let map = null;
-
-export const getMap = ({check}={}) => {
-    console.assert(check || map, "Map not initialized!")
-    return map;
-};
 
 export const getControls = () =>
 {
@@ -37,7 +31,7 @@ export const getControls = () =>
 
 export const initMap = ({target}) =>
 {
-    map = new Map({
+    const map = new Map({
         target: target,
         layers: Object.values(baseLayers),
         controls: getControls(),
@@ -64,14 +58,14 @@ export const initMap = ({target}) =>
     return map;
 }
 
-const getResolutionForExtent = (extent) =>
+const getResolutionForExtent = (map, extent) =>
 {
     const [width, height] = map.getSize(); // width height of map container in pxl
     const [minX, minY, maxX, maxY] = extent;
     return Math.max((maxX-minX)/width, (maxY-minY)/height) * 1.05;
 };
 
-export const fitToExtent = (extent) =>
+export const fitToExtent = (map, extent) =>
 {
     console.assert(extent, `Invalid extent ${extent}`);
     console.assert(map, `Invalid map ${map}`);
@@ -80,16 +74,11 @@ export const fitToExtent = (extent) =>
         console.error("Empty extent passed to fitToExtent");
         return;
     }
-    getMapAsync().then(map =>
-    {
-        console.log("This is causes problem sometimes", extent, map);
-        console.log(getExtentCenter(extent), getResolutionForExtent(extent));
-        map.getView().setCenter(getExtentCenter(extent));
-        map.getView().setResolution(getResolutionForExtent(extent));
-    });
+    map.getView().setCenter(getExtentCenter(extent));
+    map.getView().setResolution(getResolutionForExtent(extent));
 }
 
-export const animateToExtent = (newExtent, speedFactor=1) =>
+export const animateToExtent = (map, newExtent, speedFactor=1) =>
 {
     if (isEmpty(newExtent))
     {
@@ -104,14 +93,14 @@ export const animateToExtent = (newExtent, speedFactor=1) =>
     );
 };
 
-export const animateResolution = (resolution, speedFactor=1) =>
+export const animateResolution = (map, resolution, speedFactor=1) =>
 {
     map.getView().animate(
         { resolution: resolution, duration: 650/speedFactor, easing: inAndOut },
     );
 };
 
-export const animateToPoint = (lnglat) =>
+export const animateToPoint = (map, lnglat) =>
 {
     if (lnglat.some(isNaN) || lnglat.length !== 2) {
         return;
@@ -127,17 +116,17 @@ export const fitToNepalBounds = () =>
     fitToExtent(nepalBounds);
 }
 
-export const getMapAsync = (count=0) =>
-{
-    return new Promise((resolve, reject) => {
-        if (count>10)
-        {
-            reject("Get map async taking too damn long");
-        }
-        getMap({check: true}) ?
-            resolve(getMap())
-            :
-            setTimeout(() => resolve(getMapAsync(count+1)), 500);
-    })
-}
+// export const getMapAsync = (count=0) =>
+// {
+//     return new Promise((resolve, reject) => {
+//         if (count>10)
+//         {
+//             reject("Get map async taking too damn long");
+//         }
+//         getMap({check: true}) ?
+//             resolve(getMap())
+//             :
+//             setTimeout(() => resolve(getMapAsync(count+1)), 500);
+//     })
+// }
 
