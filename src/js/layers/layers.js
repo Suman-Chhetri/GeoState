@@ -17,8 +17,10 @@ const parcelGeoJSON = {
             "type": "Feature",
             "properties": {
                 "parcelNo": 1,
-                "ownerName": "Diwash",
-                "area": "1 Ropani"
+                "owner": "Diwash",
+                "area": "1 Ropani",
+                "cost": "NPR. 10,00,10,000",
+                "imgUrl": "/static/land1.jpeg"
             },
             "geometry": {
                 "type": "Polygon",
@@ -42,8 +44,10 @@ const parcelGeoJSON = {
             "type": "Feature",
             "properties": {
                 "parcelNo": 2,
-                "ownerName": "Suman",
-                "area": "1 Ropani"
+                "owner": "Suman",
+                "area": "2 Ropani",
+                "cost": "NPR. 21,00,20,000",
+                "imgUrl": "/static/land2.jpg"
             },
             "geometry": {
                 "type": "Polygon",
@@ -79,6 +83,7 @@ export const makeParcelLayer = () =>
     return new VectorLayer({
         source: parcelSoure,
         style: style,
+        id: 'parcel',
     });
 };
 
@@ -106,6 +111,7 @@ export const makeParcelPointLayer = () =>
     return new VectorLayer({
         source: parcelPointSource,
         style: iconStyle,
+        id: 'parcel-point'
     });
 }
 

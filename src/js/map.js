@@ -56,7 +56,6 @@ export const initMap = ({target}) =>
             parcelPointLayer.setVisible(true);
         }
     });
-
     return map;
 }
 

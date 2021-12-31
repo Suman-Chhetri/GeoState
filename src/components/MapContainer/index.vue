@@ -1,10 +1,12 @@
 <template>
   <div id='map'>
+    <ParcelHoverInfo :get-map="getMap"/>
     <div class='base-layer-selector-wrapper'>
       <BaseLayerSelector :get-map="getMap" large/>
       <MeasureTool :get-map="getMap"/>
     </div>
     <div class="tools">
+      <LocationSearch/>
     </div>
   </div>
 </template>
@@ -12,6 +14,8 @@
 <script>
 import BaseLayerSelector from '@/components/MapContainer/BaseLayerSelector';
 import MeasureTool from '@/components/MapContainer/MeasureTool';
+import LocationSearch from '@/components/MapContainer/LocationSearch';
+import ParcelHoverInfo from '@/components/MapContainer/ParcelHoverInfo';
 import { initMap,animateToExtent } from '@/js/map';
 
 export default {
@@ -19,6 +23,8 @@ export default {
   components: {
     BaseLayerSelector,
     MeasureTool,
+    LocationSearch,
+    ParcelHoverInfo,
   },
   data() {
     return {
@@ -56,5 +62,11 @@ export default {
   top: 2px;
   position: absolute;
   width: 100px;
+}
+.tools {
+  position: absolute;
+  top: 7em;
+  left: .5em;
+  z-index: 100;
 }
 </style>
