@@ -66,27 +66,39 @@ export default {
   },
   mounted()
   {
-    setTimeout(this.setupTools, 1500);
+    this.setupTools();
   },
   methods: {
-    setupTools() {
-      const map = this.getMap();
+    setupTools()
+    {
+      const getMapAsync = (count=0) =>
+      {
+        return new Promise((resolve, reject) => {
+          if (count>10) reject("Get map async is taking too damn long");
+          this.getMap() ?
+            resolve(this.getMap())
+            :
+            setTimeout(() => resolve(getMapAsync(count+1)), 500);
+        });
+      }
+      getMapAsync().then(map =>
+      {
+        map.addInteraction(this.drawLine);
+        map.addInteraction(this.drawPolygon);
+        this.drawLine.setActive(false);
+        this.drawPolygon.setActive(false);
+        map.addOverlay(this.tooltip);
 
-      map.addInteraction(this.drawLine);
-      map.addInteraction(this.drawPolygon);
-      this.drawLine.setActive(false);
-      this.drawPolygon.setActive(false);
-      map.addOverlay(this.tooltip);
+        // Set feature on drawstart
+        this.drawLine.on('drawstart', this.tooltip.setFeature.bind(this.tooltip));
+        // Remove feature on finish
+        this.drawLine.on(['change:active','drawend'], this.tooltip.removeFeature.bind(this.tooltip));
 
-      // Set feature on drawstart
-      this.drawLine.on('drawstart', this.tooltip.setFeature.bind(this.tooltip));
-      // Remove feature on finish
-      this.drawLine.on(['change:active','drawend'], this.tooltip.removeFeature.bind(this.tooltip));
-
-      // Set feature on drawstart
-      this.drawPolygon.on('drawstart', this.tooltip.setFeature.bind(this.tooltip));
-      // Remove feature on finish
-      this.drawPolygon.on(['change:active','drawend'], this.tooltip.removeFeature.bind(this.tooltip));
+        // Set feature on drawstart
+        this.drawPolygon.on('drawstart', this.tooltip.setFeature.bind(this.tooltip));
+        // Remove feature on finish
+        this.drawPolygon.on(['change:active','drawend'], this.tooltip.removeFeature.bind(this.tooltip));
+      })
     },
     updateToolState()
     {

@@ -9,6 +9,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 
 import baseLayers from '../js/layers/base';
+import  { makeParcelPointLayer,makeParcelLayer } from '../js/layers/layers';
 // import store from '../store';
 
 export const nepalBounds = [80.05, 26.3, 88.21, 30.6];
@@ -31,27 +32,28 @@ export const getControls = () =>
 
 export const initMap = ({target}) =>
 {
+    const parcelLayer = makeParcelLayer();
+    const parcelPointLayer = makeParcelPointLayer();
     const map = new Map({
         target: target,
-        layers: Object.values(baseLayers),
+        layers: [...Object.values(baseLayers), parcelLayer, parcelPointLayer ],
         controls: getControls(),
         view: new View({ center: [84, 27.5], zoom: 7, projection: 'EPSG:4326', duration: 250 }),
     });
 
     map.on('moveend', () =>
     {
-        if (map.getView().getResolution() < 0.001)
+        // console.log(map.getView().calculateExtent(map.getSize()));
+        console.log(map.getView().getResolution());
+        if (map.getView().getResolution() < 0.000026454792873537297)
         {
-            // // * Dispatch enableMuniLayer 
-            // store.dispatch('layers/setLayerEnabledById', {layerId: 'gaunagar', enabled: true});
-            // store.dispatch('layers/setLayerEnabledById', {layerId: 'settlement', enabled: true});
-            // store.dispatch('layers/setLayerEnabledById', {layerId: 'buildings', enabled: true});
+            parcelLayer.setVisible(true);
+            parcelPointLayer.setVisible(false);
         }
         else
         {
-            // store.dispatch('layers/setLayerEnabledById', {layerId: 'gaunagar', enabled: false});
-            // store.dispatch('layers/setLayerEnabledById', {layerId: 'settlement', enabled: false});
-            // store.dispatch('layers/setLayerEnabledById', {layerId: 'buildings', enabled: false});
+            parcelLayer.setVisible(false);
+            parcelPointLayer.setVisible(true);
         }
     });
 
@@ -75,17 +77,18 @@ export const fitToExtent = (map, extent) =>
         return;
     }
     map.getView().setCenter(getExtentCenter(extent));
-    map.getView().setResolution(getResolutionForExtent(extent));
+    map.getView().setResolution(getResolutionForExtent(map, extent));
 }
 
-export const animateToExtent = (map, newExtent, speedFactor=1) =>
+export const animateToExtent = (map, newExtent, speedFactor=0.8) =>
 {
+    console.log(map, newExtent);
     if (isEmpty(newExtent))
     {
         console.error("Empty extent passed to animateToExtent");
         return;
     }
-    const newResolution = getResolutionForExtent(newExtent);
+    const newResolution = getResolutionForExtent(map, newExtent);
     map.getView().animate(
         // { resolution: map.getView().getResolution()*1.2, duration: 650/speedFactor, easing: inAndOut },
         { center: getExtentCenter(newExtent), duration: 650/speedFactor, easing: inAndOut },

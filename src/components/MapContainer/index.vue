@@ -12,7 +12,7 @@
 <script>
 import BaseLayerSelector from '@/components/MapContainer/BaseLayerSelector';
 import MeasureTool from '@/components/MapContainer/MeasureTool';
-import { initMap } from '@/js/map';
+import { initMap,animateToExtent } from '@/js/map';
 
 export default {
   name: 'MapContainer',
@@ -23,11 +23,13 @@ export default {
   data() {
     return {
       map: null,
+      ktmExtent: [85.25740245466136, 27.652044913747996, 85.38262603847531, 27.746338487151636],
     };
   },
   mounted()
   {
     this.map = initMap({target: 'map'});
+    setTimeout(() => animateToExtent(this.map, this.ktmExtent), 100);
   },
   methods: {
     getMap() {
