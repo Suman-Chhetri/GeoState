@@ -43,8 +43,6 @@ export const initMap = ({target}) =>
 
     map.on('moveend', () =>
     {
-        // console.log(map.getView().calculateExtent(map.getSize()));
-        console.log(map.getView().getResolution());
         if (map.getView().getResolution() < 0.000026454792873537297)
         {
             parcelLayer.setVisible(true);

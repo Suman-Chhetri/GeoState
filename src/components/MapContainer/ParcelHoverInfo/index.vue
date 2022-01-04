@@ -7,7 +7,7 @@
       <div>&bull; Owner: {{ parcel.owner}}</div>
       <div>&bull; Cost: {{ parcel.cost }}</div>
       <div>&bull; Area: {{ parcel.area }}</div>
-      <div><a class='detail-link' href="{{ parcel.clickLink }}" target="_blank">Go to details</a></div>
+      <div><a class='detail-link' :href="parcel.clickLink" target="_blank">Go to details</a></div>
     </div>
   </div>
 </template>
@@ -75,25 +75,16 @@ export default {
           this.position = { x: `${parseInt(e.pixel[0])}px`, y: `${parseInt(e.pixel[1])}px` };
           this.parcel = selected.getProperties();
           this.isVisible = true;
-          console.log(this.position, this.parcel, this.isVisible)
         } else {
           this.parcel = getDefaultParcelInfo();
           this.position = { x: undefined, y: undefined };
           this.isVisible = false;
         }
       });
-      // // click to link 
-      // map.on('singleclick', (event) =>
-      // {
-      //     map.forEachFeatureAtPixel(event.pixel, feature =>
-      //     {
-      //       const url = feature.get('clickLink');
-      //       window.open(url, '_blank');
-      //     }, {
-      //       layerFilter: layer => layer.get('id')==='parcel'
-      //     });
-      // });
     },
+    print(value) {
+      console.log(value);
+    }
   },
 }
 </script>

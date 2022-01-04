@@ -1,17 +1,20 @@
 <template>
   <div class="home">
+    <NavBar/>
     <MapContainer/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import NavBar from '@/components/Navbar';
 import MapContainer from '@/components/MapContainer';
 
 export default {
   name: 'Home',
   components: {
-    MapContainer
+    MapContainer,
+    NavBar,
   }
 }
 </script>
