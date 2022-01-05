@@ -2,6 +2,7 @@
   <div id='map'>
     <ParcelHoverInfo :get-map="getMap"/>
     <div class="tools">
+      <AdvancedSearch/>
     </div>
     <div class='base-layer-selector-wrapper'>
       <BaseLayerSelector :get-map="getMap" large/>
@@ -16,6 +17,7 @@ import FeaturedList from '@/components/MapContainer/FeaturedList';
 import BaseLayerSelector from '@/components/MapContainer/BaseLayerSelector';
 import MeasureTool from '@/components/MapContainer/MeasureTool';
 import ParcelHoverInfo from '@/components/MapContainer/ParcelHoverInfo';
+import AdvancedSearch from '@/components/MapContainer/AdvancedSearch';
 import { initMap,animateToExtent } from '@/js/map';
 
 export default {
@@ -25,6 +27,7 @@ export default {
     MeasureTool,
     ParcelHoverInfo,
     FeaturedList,
+    AdvancedSearch,
   },
   data() {
     return {

@@ -48,10 +48,10 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
 .featured-list {
   padding: 4px;
 }
-<style lang="scss" scoped>
 .featured-list {
    @include setBlurGlassBackground();
 }
