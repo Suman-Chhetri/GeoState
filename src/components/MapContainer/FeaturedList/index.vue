@@ -22,18 +22,17 @@ export default {
   data() {
     const lands = [
       {
-        "id": 1,
         "title": "4 Anna land on sale on Tokha",
         "location": "Tokha, Kathmandu",
-        "area": "5 Anna",
+        "area": "4 Anna",
         "propertyType": "Land",
         "offerType": "For Sale",
         "rate": "34 Lakhs per Anna",
         "road": "20f",
-        "img": "https://gharjhagga.com/wp-content/uploads/2021/10/WhatsApp-Image-2021-09-14-at-11.27.14-AM-1.jpeg"
+        "img": "https://gharjhagga.com/wp-content/uploads/2021/10/WhatsApp-Image-2021-09-14-at-11.27.14-AM-1.jpeg",
+        "link": "https://gharjhagga.com/properties/land/kathmandu/4-aana-land-on-sale-at-ramilo-dada-tokha/"
       },
       {
-        "id": 2,
         "title": "9 Anna land on sale on Pashikot, Budanilkantha",
         "location": "Tokha, Kathmandu",
         "area": "9 Anna",
@@ -41,7 +40,8 @@ export default {
         "offerType": "For Sale",
         "rate": "23 Lakhs per Anna",
         "road": "13ft",
-        "img": "https://gharjhagga.com/wp-content/uploads/2021/10/WhatsApp-Image-2021-09-21-at-8.13.57-PM-1.jpeg"
+        "img": "https://gharjhagga.com/wp-content/uploads/2021/10/WhatsApp-Image-2021-09-21-at-8.13.57-PM-1.jpeg",
+        "link": "https://gharjhagga.com/properties/land/kathmandu/9-aana-land-on-sale-at-pashikotbhudhanilkhantha/"
       }
     ];
     return { lands };

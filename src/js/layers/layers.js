@@ -17,8 +17,8 @@ const parcelGeoJSON = {
             "type": "Feature",
             "properties": {
                 "parcelNo": 1,
-                "owner": "Diwash",
-                "area": "1 Ropani",
+                "owner": "Hira Sitaula",
+                "area": "14 Anna",
                 "cost": "NPR. 10,00,10,000",
                 "imgUrl": "/static/land1.jpeg",
                 "clickLink": "https://gharjhagga.com/properties/land/kathmandu/14-aana-land-sale-on-tokha/",
@@ -46,8 +46,8 @@ const parcelGeoJSON = {
             "properties": {
                 "parcelNo": 2,
                 "owner": "Suman",
-                "area": "2 Ropani",
-                "cost": "NPR. 21,00,20,000",
+                "area": "5 Anna",
+                "cost": "NPR. 1,00,20,000",
                 "imgUrl": "/static/land2.jpg",
                 "clickLink": "https://gharjhagga.com/properties/land/kathmandu/5-aana-land-on-sale-in-tokha/",
             },
