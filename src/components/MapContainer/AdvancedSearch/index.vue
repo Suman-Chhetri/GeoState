@@ -56,7 +56,7 @@ export default {
 .advanced-search {
   @include setBlurGlassBackground();
   text-align: left;
-  padding: 1em;
+  padding: 0.7em;
   select {
     margin: 4px 0;
   }
