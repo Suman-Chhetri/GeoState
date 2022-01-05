@@ -3,11 +3,13 @@
     <div class='header'>
       Featured Lands
     </div>
+    <div style="display: flex;">
     <FeaturedCard
       v-for="land in lands"
       :key="land.id"
       :land="land"
     />
+    </div>
   </div>
 </template>
 
