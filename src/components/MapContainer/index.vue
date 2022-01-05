@@ -75,7 +75,7 @@ export default {
 .featured-wrapper {
   position: absolute;
   right: 0.5em;
-  top: 8em;
+  bottom: 0.5em;
   z-index: 100;
 }
 </style>

@@ -21,7 +21,9 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  display: grid;
   height: 100vh;
-  min-height: 100vh;
+  max-height: 1000px;
+  grid-template-rows: auto minmax(0,1fr);
 }
 </style>
