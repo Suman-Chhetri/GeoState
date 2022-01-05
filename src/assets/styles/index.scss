@@ -1,4 +1,3 @@
-@import '~/bootstrap/scss/bootstrap';
 * {
     box-sizing: border-box;
     padding: 0;
@@ -77,3 +76,6 @@ hr {
     right: 0em;
     top: 0em;
  }
+
+// Library imports
+@import '~bootstrap/scss/bootstrap';

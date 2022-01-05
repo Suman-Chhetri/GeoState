@@ -1,20 +1,20 @@
 <template>
   <div id='map'>
     <ParcelHoverInfo :get-map="getMap"/>
+    <div class="tools">
+    </div>
     <div class='base-layer-selector-wrapper'>
       <BaseLayerSelector :get-map="getMap" large/>
       <MeasureTool :get-map="getMap"/>
     </div>
-    <div class="tools">
-      <LocationSearch/>
-    </div>
+    <div class="featured-wrapper"><FeaturedList/></div>
   </div>
 </template>
 
 <script>
+import FeaturedList from '@/components/MapContainer/FeaturedList';
 import BaseLayerSelector from '@/components/MapContainer/BaseLayerSelector';
 import MeasureTool from '@/components/MapContainer/MeasureTool';
-import LocationSearch from '@/components/MapContainer/LocationSearch';
 import ParcelHoverInfo from '@/components/MapContainer/ParcelHoverInfo';
 import { initMap,animateToExtent } from '@/js/map';
 
@@ -23,8 +23,8 @@ export default {
   components: {
     BaseLayerSelector,
     MeasureTool,
-    LocationSearch,
     ParcelHoverInfo,
+    FeaturedList,
   },
   data() {
     return {
@@ -67,6 +67,12 @@ export default {
   position: absolute;
   top: 7em;
   left: .5em;
+  z-index: 100;
+}
+.featured-wrapper {
+  position: absolute;
+  right: 0.5em;
+  top: 8em;
   z-index: 100;
 }
 </style>
